@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec < /dev/tty
+
+.git/hooks/emoji-commit-msg.rb $1

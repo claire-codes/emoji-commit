@@ -1,7 +1,10 @@
 require 'spec_helper'
 
-# def emoji_exists?(message)
-#   message.match(/^:(-|e-\w+)?(\w+):/) ? true : false
+
+# describe Emoji::Commit do
+#   it 'has a version number' do
+#     expect(Emoji::Commit::VERSION).not_to be nil
+#   end
 # end
 
 # describe 'emoji_exists?' do

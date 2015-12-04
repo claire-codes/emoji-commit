@@ -2,4 +2,4 @@
 
 exec < /dev/tty
 
-.git/hooks/emoji-commit-msg.rb $1
+.git/hooks/emoji-script.rb $1

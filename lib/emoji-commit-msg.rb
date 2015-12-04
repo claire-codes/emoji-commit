@@ -27,9 +27,3 @@ class Emoji_Commit
   end
 
 end
-
-bar = ARGV[0]
-
-foo = Emoji_Commit.new bar
-foo.edit_commit_msg
-

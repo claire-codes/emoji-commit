@@ -3,13 +3,10 @@ require 'json'
 
 class Emoji_Commit
 
-  attr_accessor :msg_file, :commit_msg
+  attr_accessor :msg_file
 
   def initialize(file)
-    @commit_msg = File.read(file.to_s)
-    @msg_file = File.open(file, 'a')
-    puts @commit_msg
-    #
+    @msg_file = file
   end
 
   def emoji_exists?(message)
@@ -23,23 +20,16 @@ class Emoji_Commit
   end
 
   def edit_commit_msg
-    # msg_file = @file
-
-    # commit_msg = File.read(@msg_file)
-
+    commit_msg = File.read(@msg_file)
     unless emoji_exists?(commit_msg)
-
-      @msg_file.puts "#{get_emoji} #{commit_msg}"
-      # File.open(msg_file, 'w') { |file| file.write(emoji_msg) }
-
+      File.write(@msg_file, "#{get_emoji} #{commit_msg}")
     end
-
-    # commit_msg.close
   end
 
 end
 
-bar = ARGV[0].to_s
+# bar = ARGV[0]
 
-foo = Emoji_Commit.new bar
-foo.edit_commit_msg
+# foo = Emoji_Commit.new bar
+# foo.edit_commit_msg
+

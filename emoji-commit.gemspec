@@ -5,7 +5,7 @@ require 'emoji-commit-version'
 
 Gem::Specification.new do |spec|
   spec.name          = "emoji-commit"
-  spec.version       = Emoji::Commit::VERSION
+  spec.version       = EmojiCommit::VERSION
   spec.authors       = ["Claire Parker"]
   spec.email         = ["claire.parker87@gmail.com"]
 

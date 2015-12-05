@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require 'emoji-commit-msg'
 
 bar = ARGV[0]

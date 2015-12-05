@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require 'FileUtils'
 require 'Thor'
 
@@ -18,6 +19,7 @@ module EmojiCommit
 			FileUtils.cp(path + '/emoji-commit-msg.rb', '.git/hooks/emoji-commit-msg.rb')
 			FileUtils.cp(path + '/commit-msg', '.git/hooks/commit-msg')
 			FileUtils.cp(path + '/assets/emojis.json', '.git/hooks/emojis.json')
+			FileUtils.chmod 0755, %w(.git/hooks/emoji-script.rb .git/hooks/emoji-commit-msg.rb .git/hooks/commit-msg .git/hooks/emojis.json)
 			puts 'Made it'
 
 		end

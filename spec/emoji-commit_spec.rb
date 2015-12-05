@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 
-# describe Emoji::Commit do
+# describe EmojiCommit do
 #   it 'has a version number' do
-#     expect(Emoji::Commit::VERSION).not_to be nil
+#     expect(VERSION).not_to be nil
 #   end
 # end
 
@@ -17,26 +17,33 @@ require 'spec_helper'
 #   end
 # end
 
-describe 'whole process' do
-	test_file = 'test.txt'
+describe EmojiCommit::EmojiCommitMsg do
 
-	before(:each) do
-		File.open(test_file, 'w')  {|f| f.write('foo bar') }
-	end
+	describe '::edit_commit_msg' do
+		test_file = 'test.txt'
 
-	it 'will add an emoji to a commit message and write it to the file' do
-		allow_any_instance_of(Emoji_Commit).to receive(:get_emoji).and_return(':foo:')
-		emoji_commit = Emoji_Commit.new test_file
-		emoji_commit.edit_commit_msg
-		final_msg = File.open(test_file, 'r') { |f| f.read }
-		expect(final_msg).to eq ':foo: foo bar'
-	end
+		before(:each) do
+			File.open(test_file, 'w')  {|f| f.write('foo bar') }
+		end
 
-	it 'won\'t add a new emoji to a message that already starts with one' do
-		File.open(test_file, 'w')  {|f| f.write(':rar: foo bar') }
-		emoji_commit = Emoji_Commit.new test_file
-		emoji_commit.edit_commit_msg
-		final_msg = File.open(test_file, 'r') { |f| f.read }
-		expect(final_msg).to eq ':rar: foo bar'
+		it 'will add an emoji to a commit message and write it to the file' do
+			allow_any_instance_of(EmojiCommit::EmojiCommitMsg).to receive(:get_emoji).and_return(':foo:')
+			emoji_commit = EmojiCommit::EmojiCommitMsg.new test_file
+			emoji_commit.edit_commit_msg
+			final_msg = File.open(test_file, 'r') { |f| f.read }
+			expect(final_msg).to eq ':foo: foo bar'
+		end
+
+		it 'won\'t add a new emoji to a message that already starts with one' do
+			File.open(test_file, 'w')  {|f| f.write(':rar: foo bar') }
+			emoji_commit = EmojiCommit::EmojiCommitMsg.new test_file
+			emoji_commit.edit_commit_msg
+			final_msg = File.open(test_file, 'r') { |f| f.read }
+			expect(final_msg).to eq ':rar: foo bar'
+		end
+
+		describe '::emoji_exists?' do
+
+		end
 	end
 end

@@ -2,7 +2,7 @@
 require 'json'
 
 module EmojiCommit
-  class Emoji_Commit
+  class EmojiCommitMsg
 
     attr_accessor :msg_file
 

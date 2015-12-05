@@ -14,6 +14,8 @@ class Emoji_Commit
   end
 
   def get_emoji
+    puts Dir.pwd
+    
     emojis_file = File.read("#{Dir.pwd}/.git/hooks/emojis.json")
     emojis_hash = JSON.parse(emojis_file)
     emojis_hash[emojis_hash.keys.sample].strip

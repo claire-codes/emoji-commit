@@ -16,9 +16,13 @@ module EmojiCommit
     def get_emoji
       puts Dir.pwd
 
-      emojis_file = File.read("#{Dir.pwd}/.git/hooks/emojis.json")
+      emojis_file = File.read(path_to_emojis)
       emojis_hash = JSON.parse(emojis_file)
       emojis_hash[emojis_hash.keys.sample].strip
+    end
+
+    def path_to_emojis
+      "#{Dir.pwd}/.git/hooks/emojis.json"
     end
 
     def edit_commit_msg

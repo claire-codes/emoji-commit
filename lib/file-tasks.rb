@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require 'FileUtils'
+require 'fileutils'
 require 'Thor'
 
 module EmojiCommit
@@ -7,10 +7,12 @@ module EmojiCommit
     desc 'install', 'installs commit hook scripts'
 
     def install
-      exit unless Dir.exist?('.git')
+      unless Dir.exist?('.git')
+        puts 'Git has not been initialised in this directory. Bye'
+        exit
+      end
 
       if File.exist?('.git/hooks/commit-msg') then FileUtils.rm('.git/hooks/commit-msg') end
-
       if File.exist?('.git/hooks/commit-msg.sample') then FileUtils.rm('.git/hooks/commit-msg.sample') end
 
       path = path_to_resources

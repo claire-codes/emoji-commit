@@ -3,7 +3,6 @@ require 'json'
 
 module EmojiCommit
   class EmojiCommitMsg
-
     attr_accessor :msg_file
 
     def initialize(file)
@@ -11,7 +10,7 @@ module EmojiCommit
     end
 
     def emoji_exists?(message)
-      message.match(/^:(-|e-\w+)?(\w+):/) ? true : false
+      message.match(/^:(-|\+|non-|e-\w+)?(\w+):/) ? true : false
     end
 
     def get_emoji
@@ -24,9 +23,8 @@ module EmojiCommit
 
     def edit_commit_msg
       commit_msg = File.read(@msg_file)
-      unless emoji_exists?(commit_msg)
-        File.write(@msg_file, "#{get_emoji} #{commit_msg}")
-      end
+      return if emoji_exists?(commit_msg)
+      File.write(@msg_file, "#{get_emoji} #{commit_msg}")
     end
   end
 end

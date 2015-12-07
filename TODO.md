@@ -1,9 +1,25 @@
+### Before release
+
+* ~~Get rid of warnings on fileutils~~
 * Readme
-* Ask use whether they want to install or not
-* Test ^
-* Verify all the __FILE__ stuff
-* ~~Test in a different location~~
-* Verify bundle exec stuff
-* Check cp an existing file is OK and doesn't need a rescue
-* Does the file-tasks need a rescue anywhere?
-* Work out why test.txt is getting committed - specs wrong?
+* ~~Add more specs for emoji_exists regex~~
+* ~~Add specs for get_emoji~~
+* ~~Rename emoji-commit-msg class and methods~~
+* ~~Print message on successful install~~
+* Print message on unsuccessful install/exit
+* Refactor and rename file-tasks
+* ~~Ask whether they want to install~~
+* Test asking whether they want to install
+* Test all bundle exec Thor stuff
+* Check Fileutils.cp is OK if file already exists
+* Add a rescue in to file-tasks
+
+### Next version
+
+* Can you do skin tone modifiers in Git emojis?
+  * Add support for this if yes
+* Prompt user through install
+* Add uninstall scripts method
+* Add SimpleCov
+* Spec for file-tasks
+* Add colours to prompt messages

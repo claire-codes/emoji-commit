@@ -1,28 +1,38 @@
 # EmojiCommit
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/emoji/commit`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Have you ever found your Git commit messages a little ... boring? Well they are. Just look at them! Now you can spice them up with :curry::banana::bomb: everyone's favourite characters: emojis!
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'emoji-commit'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install on the command line with:
 
     $ gem install emoji-commit
 
 ## Usage
 
-TODO: Write usage instructions here
+The gem installs a special commit hook script in a repo of your choosing.
+
+Make sure you're in the root directory of a Git initialised repo (it will have the `.git` hidden folder in it. Then execute:
+
+`$ emoji install`
+
+Now every time you write a commit message, a random emoji from [this](http://www.emoji-cheat-sheet.com/) list will be prefixed to it.
+
+`$ git commit -m 'Some boring message'`
+
+Will be added to your repo as:
+
+`:kimono: Some boring message`
+
+Or:
+
+`:sheep: Some boring message`
+
+Or even:
+
+`:lock_with_ink_pen: Some boring message`
+
+It is random after all.
 
 ## Development
 

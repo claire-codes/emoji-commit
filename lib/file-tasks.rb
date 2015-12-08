@@ -7,6 +7,11 @@ module EmojiCommit
     desc 'install', 'installs commit hook scripts'
 
     def install
+      unless Dir.exist?('.git')
+        puts 'Git has not been initialised in this directory. Bye'
+        exit
+      end
+
       puts 'You are about to overwrite any existing Git commit hook with the emoji script'
       puts 'Is that OK? (y|n)'
       answer = STDIN.gets.strip.downcase
@@ -15,11 +20,6 @@ module EmojiCommit
         exit
       elsif answer != 'y'
         puts 'Pardon? Oh who cares. Bye'
-        exit
-      end
-
-      unless Dir.exist?('.git')
-        puts 'Git has not been initialised in this directory. Bye'
         exit
       end
 

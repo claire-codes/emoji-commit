@@ -74,4 +74,8 @@ describe EmojiCommit::EmojiCommitMsg do
       expect(subject.emoji_exists?(subject.get_emoji)).to be true
     end
   end
+
+  after(:all) do
+    File.open(test_file, 'w') { |f| f.write('') }
+  end
 end

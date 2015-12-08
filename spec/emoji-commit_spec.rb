@@ -9,7 +9,7 @@ require 'json'
 
 
 describe EmojiCommit::EmojiCommitMsg do
-  test_file = 'test.txt'
+  test_file = './spec/test_data/test.txt'
   describe '::edit_commit_msg' do
 
     before(:each) do

@@ -8,7 +8,7 @@ require 'json'
 # end
 
 
-describe EmojiCommit::EmojiCommitMsg do
+describe EmojiCommit::Msg do
   test_file = './spec/test_data/test.txt'
   describe '::edit_commit_msg' do
 
@@ -17,8 +17,8 @@ describe EmojiCommit::EmojiCommitMsg do
     end
 
     it 'will add an emoji to a commit message and write it to the file' do
-      allow_any_instance_of(EmojiCommit::EmojiCommitMsg).to receive(:get_emoji).and_return(':foo:')
-      emoji_commit = EmojiCommit::EmojiCommitMsg.new test_file
+      allow_any_instance_of(EmojiCommit::Msg).to receive(:get_emoji).and_return(':foo:')
+      emoji_commit = EmojiCommit::Msg.new test_file
       emoji_commit.edit_commit_msg
       final_msg = File.open(test_file, &:read)
       expect(final_msg).to eq ':foo: foo bar'
@@ -26,7 +26,7 @@ describe EmojiCommit::EmojiCommitMsg do
 
     it 'won\'t add a new emoji to a message that already starts with one' do
       File.open(test_file, 'w') { |f| f.write(':rar: foo bar') }
-      emoji_commit = EmojiCommit::EmojiCommitMsg.new test_file
+      emoji_commit = EmojiCommit::Msg.new test_file
       emoji_commit.edit_commit_msg
       final_msg = File.open(test_file, &:read)
       expect(final_msg).to eq ':rar: foo bar'
@@ -35,7 +35,7 @@ describe EmojiCommit::EmojiCommitMsg do
 
   describe '::emoji_exists?' do
     subject do
-      EmojiCommit::EmojiCommitMsg.new(test_file)
+      EmojiCommit::Msg.new(test_file)
     end
 
     it 'will return true if message begins with an emoji' do
@@ -65,11 +65,11 @@ describe EmojiCommit::EmojiCommitMsg do
 
   describe '::get_emoji' do
     subject do
-      EmojiCommit::EmojiCommitMsg.new(test_file)
+      EmojiCommit::Msg.new(test_file)
     end
 
     it 'will return one emoji as defined by ::emoji_exists?' do
-      allow_any_instance_of(EmojiCommit::EmojiCommitMsg).to receive(:path_to_emojis).and_return(File.expand_path("../test_data/emojis.json", __FILE__))
+      allow_any_instance_of(EmojiCommit::Msg).to receive(:path_to_emojis).and_return(File.expand_path("../test_data/emojis.json", __FILE__))
       expect(subject.get_emoji).to be_a(String)
       expect(subject.emoji_exists?(subject.get_emoji)).to be true
     end

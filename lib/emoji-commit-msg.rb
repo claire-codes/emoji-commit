@@ -2,7 +2,7 @@
 require 'json'
 
 module EmojiCommit
-  class EmojiCommitMsg
+  class Msg
     attr_accessor :msg_file
 
     def initialize(file)

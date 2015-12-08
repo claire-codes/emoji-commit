@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['claire.parker87@gmail.com']
 
   spec.summary       = %q(Adds an emoji to your commit message)
-  spec.description   = %q(Prefixes Git commit messages with a random Git-friendly emoji.)
+  spec.description   = %q(Prefixes Git commit messages with a random GitHub-friendly emoji.)
   spec.homepage      = 'https://github.com/claireparker/emoji-commit'
   spec.license       = 'MIT'
 

@@ -1,7 +1,9 @@
-### Before release
+### TODO
+
+Pull requests welcome
 
 * ~~Get rid of warnings on fileutils~~
-* Readme
+* ~~Readme~~
 * ~~Add more specs for emoji_exists regex~~
 * ~~Add specs for get_emoji~~
 * ~~Rename emoji-commit-msg class and methods~~
@@ -13,9 +15,6 @@
 * Test all bundle exec Thor stuff
 * Check Fileutils.cp is OK if file already exists
 * Add a rescue in to file-tasks
-
-### Next version
-
 * Can you do skin tone modifiers in Git emojis?
   * Add support for this if yes
 * Prompt user through install

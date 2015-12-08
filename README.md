@@ -14,25 +14,27 @@ The gem installs a special commit hook script in a repo of your choosing.
 
 Make sure you're in the root directory of a Git initialised repo (it will have the `.git` hidden folder in it, check it's there with `ls -a`). Then execute:
 
-`$ emoji install`
+```shell
+    $ emoji install
+```
 
 It will prompt to confirm you want to install, hit `y`. Now every time you write a commit message, a random emoji from [this](http://www.emoji-cheat-sheet.com/) list will be prefixed to it.
 
-`$ git commit -m 'Some boring message'`
+    `$ git commit -m 'Some boring message'`
 
 Will be added to your repo as:
 
-`:kimono: Some boring message`
+    `:kimono: Some boring message`
 :kimono: Some boring message
 
 Or:
 
-`:sheep: Some boring message`
+    `:sheep: Some boring message`
 :sheep: Some boring message
 
 Or even:
 
-`:lock_with_ink_pen: Some boring message`
+    `:lock_with_ink_pen: Some boring message`
 :lock_with_ink_pen: Some boring message
 
 It is random after all.

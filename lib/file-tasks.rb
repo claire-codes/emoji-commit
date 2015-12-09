@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'fileutils'
-require 'Thor'
+require 'thor'
 
 module EmojiCommit
   class Cli < Thor

@@ -30,7 +30,6 @@ module EmojiCommit
       if File.exist?('.git/hooks/commit-msg') then FileUtils.rm('.git/hooks/commit-msg') end
       if File.exist?('.git/hooks/commit-msg.sample') then FileUtils.rm('.git/hooks/commit-msg.sample') end
 
-      # path = path_to_resources
       path = File.dirname(File.expand_path(__FILE__))    
 
       ['emoji-script.rb', 'emoji-commit-msg.rb', 'commit-msg', 'emojis.json'].each do |f|
@@ -40,12 +39,6 @@ module EmojiCommit
       FileUtils.chmod 0755, %w(.git/hooks/emoji-script.rb .git/hooks/emoji-commit-msg.rb .git/hooks/commit-msg .git/hooks/emojis.json)
       
       puts 'Installed scripts successfully. Commit emoji-ful messages!'
-    end
-
-    no_commands do
-      def path_to_resources
-        File.dirname(File.expand_path(__FILE__))
-      end
     end
   end
 end

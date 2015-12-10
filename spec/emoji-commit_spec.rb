@@ -55,7 +55,7 @@ describe EmojiCommit::Msg do
     end
 
     it 'the regex matches every emoji in the json' do
-      emojis_file = File.read("#{Dir.pwd}/lib/assets/emojis.json")
+      emojis_file = File.read("#{Dir.pwd}/lib/emojis.json")
       JSON.parse(emojis_file) do |k, emoji|
         puts emoji if subject.emoji_exists?(emoji) == false
         expect(subject.emoji_exists?(emoji)).to be true

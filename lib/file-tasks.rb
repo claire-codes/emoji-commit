@@ -4,10 +4,13 @@ require 'thor'
 
 module EmojiCommit
   class Cli < Thor
-    desc 'install', 'installs commit hook scripts'
 
+    # attr_accessor :path
+      
+
+    desc 'install', 'installs commit hook scripts'
     def install
-      no_git
+      check_for_git
       
       puts 'You are about to overwrite any existing Git commit hook with the emoji script'
       puts 'Is that OK? (y|n)'
@@ -26,19 +29,20 @@ module EmojiCommit
 
       if File.exist?('.git/hooks/commit-msg') then FileUtils.rm('.git/hooks/commit-msg') end
 
-      path = File.dirname(File.expand_path(__FILE__))    
+      puts "foo #{path}"
+          
 
-      ['emoji-script.rb', 'emoji-commit-msg.rb', 'commit-msg', 'emojis.json'].each do |filename|
+      filenames.each do |filename|
         FileUtils.cp("#{path}/#{filename}", ".git/hooks/#{filename}")
+        FileUtils.chmod(0755, ".git/hooks/#{filename}")
       end
-      
-      FileUtils.chmod 0755, %w(.git/hooks/emoji-script.rb .git/hooks/emoji-commit-msg.rb .git/hooks/commit-msg .git/hooks/emojis.json)
-      
+            
       puts 'Installed scripts successfully. Commit emoji-ful messages!'
     end
 
+    desc 'uninstall', 'uninstalls commit hook scripts and restores sample script'
     def uninstall
-      no_git
+      check_for_git
 
       puts 'You are about to uninstall the emoji Git commit hook'
       puts 'Is that OK? (y|n)'
@@ -55,19 +59,29 @@ module EmojiCommit
         puts 'As long as you\'re sure :( Removing files now'
       end
 
-      ['emoji-script.rb', 'emoji-commit-msg.rb', 'commit-msg', 'emojis.json'].each do |filename|
+      filenames.each do |filename|
         FileUtils.rm(".git/hooks/#{filename}")
       end
+
+      FileUtils.cp("#{path}/commit-msg.sample", ".git/hooks/commit-msg.sample") unless File.exist?('.git/hooks/commit-msg.sample')
 
       puts 'Uninstall scripts successfully. Enjoy your boring emoji-less life.'
     end
 
     no_commands do
-      def no_git
+      def check_for_git
         unless Dir.exist?('.git')
           puts 'Git has not been initialised in this directory. Bye'
           exit
         end
+      end
+
+      def path
+        File.dirname(File.expand_path(__FILE__))
+      end
+
+      def filenames
+        ['emoji-script.rb', 'emoji-commit-msg.rb', 'commit-msg', 'emojis.json']
       end
     end
   end

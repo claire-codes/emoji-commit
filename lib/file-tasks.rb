@@ -60,12 +60,12 @@ module EmojiCommit
       end
 
       filenames.each do |filename|
-        FileUtils.rm(".git/hooks/#{filename}")
+        FileUtils.rm(".git/hooks/#{filename}") if File.exists?(".git/hooks/#{filename}")
       end
 
       FileUtils.cp("#{path}/commit-msg.sample", ".git/hooks/commit-msg.sample") unless File.exist?('.git/hooks/commit-msg.sample')
 
-      puts 'Uninstall scripts successfully. Enjoy your boring emoji-less life.'
+      puts 'Uninstalled scripts successfully. Enjoy your boring emoji-less life.'
     end
 
     no_commands do

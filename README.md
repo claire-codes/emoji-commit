@@ -40,7 +40,13 @@ Or even:
 
 It is random after all.
 
-If your message already begins with an emoji in the format `:foobar:` then this won't be overwritten. 
+If your message already begins with an emoji in the format `:foobar:` then this won't be overwritten.
+
+To remove this silly feature, in the same root directory of your project run:
+
+    $ emoji uninstall
+
+This will delete all the files previously added, and also put the original Git commit-msg file back if this was removed.
 
 ## :books: Development
 

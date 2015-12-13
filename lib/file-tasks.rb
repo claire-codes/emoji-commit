@@ -5,9 +5,6 @@ require 'thor'
 module EmojiCommit
   class Cli < Thor
 
-    # attr_accessor :path
-      
-
     desc 'install', 'installs commit hook scripts'
     def install
       check_for_git
@@ -28,9 +25,6 @@ module EmojiCommit
       end
 
       if File.exist?('.git/hooks/commit-msg') then FileUtils.rm('.git/hooks/commit-msg') end
-
-      puts "foo #{path}"
-          
 
       filenames.each do |filename|
         FileUtils.cp("#{path}/#{filename}", ".git/hooks/#{filename}")

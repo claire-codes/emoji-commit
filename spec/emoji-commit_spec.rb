@@ -52,6 +52,8 @@ describe EmojiCommit::Msg do
       expect(subject.emoji_exists?('floop :foo:')).to be false
       expect(subject.emoji_exists?('')).to be false
       expect(subject.emoji_exists?(' ')).to be false
+      expect(subject.emoji_exists?('::')).to be false
+      expect(subject.emoji_exists?(':')).to be false
     end
 
     it 'the regex matches every emoji in the json' do

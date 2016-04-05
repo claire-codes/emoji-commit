@@ -8,15 +8,17 @@ module EmojiCommit
     desc 'install', 'installs commit hook scripts'
     def install
       check_for_git
-      
+
       puts 'You are about to overwrite any existing Git commit hook with the emoji script'
-      puts 'Is that OK? (y|n)'
-      
+      puts 'Is that OK? (Y|n)'
+
       answer = STDIN.gets.strip.downcase
-      
+
       if answer == 'n'
         puts 'Fine whatever. Bye'
         exit
+      elsif answer == ''
+        puts 'Great, installing into .git/hooks'
       elsif answer != 'y'
         puts 'Pardon? Oh who cares. Bye'
         exit
@@ -30,7 +32,7 @@ module EmojiCommit
         FileUtils.cp("#{path}/#{filename}", ".git/hooks/#{filename}")
         FileUtils.chmod(0755, ".git/hooks/#{filename}")
       end
-            
+
       puts 'Installed scripts successfully. Commit emoji-ful messages!'
     end
 
